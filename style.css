@@ -44,9 +44,37 @@ input.search-bar{
     color: white;
     font-family: inherit;
     font-size: 110%;
-    
 }
 
 h1.temp {
     margin: 0;
+    margin-bottom: 0.1em;
+}
+
+.description {
+    text-transform: capitalize;
+    margin-left: 4px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.humidity {
+    margin-bottom: 0.3em;
+}
+
+.city {
+    margin : 0.1em;
+}
+
+.weather.loading {
+    visibility: hidden;
+}
+
+.weather.loading:after {
+    visibility: visible;
+    content: "Loading...";
+    color: white;
 }
