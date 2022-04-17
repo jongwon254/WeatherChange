@@ -1,0 +1,21 @@
+{
+    "name": "WeatherChange",
+    "description": "Check your weather forecast with changing backgrounds!",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "background": {
+        "scripts": [
+            "script.js"
+        ],
+        "persistent": true
+    },
+    "browser_action":{
+        "default_title": "WeatherChange",
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "https://*/*",
+        "http://*/*",
+        "tabs"
+    ]
+}
