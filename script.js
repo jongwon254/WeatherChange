@@ -1,4 +1,4 @@
-let weather = {
+var weather = {
     
     // get weather information from api with specific parameters
     "apiKey": "ecb0381659a4d82b4beb615cc0f84b6c",
@@ -10,6 +10,7 @@ let weather = {
         )
         .then((response) => response.json())
         .then((data) => this.displayWeather(data));
+
     },
 
     // extract information from JSON object
@@ -35,12 +36,17 @@ let weather = {
         document.querySelector(".humidity").innerText = "Humiditiy: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
+
+        chrome.tabs.executeScript({
+            file: "app.js"
+        })
+        
     },
 
     // get city from search bar
     search: function() {
         this.fetchWeather(document.querySelector(".search-bar").value);
-    }
+    },
 };
 
 // listening to button click
@@ -57,3 +63,8 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event) 
 
 // standard location at loading = Munich
 weather.fetchWeather("Munich");
+
+// background of page
+chrome.tabs.executeScript({
+    file: "app.js"
+})
