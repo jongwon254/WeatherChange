@@ -1,6 +1,6 @@
 {
     "name": "WeatherChange",
-    "description": "Check your weather forecast anytime you want with changing weather backgrounds!",
+    "description": "Automatically gets the weather forecast of your current location with changing weather backgrounds. You can also search for other cities.",
     "version": "1.0.0",
     "manifest_version": 2,
     "background": {

@@ -89,4 +89,5 @@ function getLocation() {
     })
   }
 
+// standard weather forecast of user location
 getLocation();
