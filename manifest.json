@@ -1,6 +1,6 @@
 {
     "name": "WeatherChange",
-    "description": "Automatically gets the weather forecast of your current location with changing weather backgrounds. You can also search for other cities.",
+    "description": "Check the weather forecast of your current location or search for other cities. With changing weather backgrounds.",
     "version": "1.0.0",
     "manifest_version": 2,
     "background": {
@@ -9,7 +9,17 @@
         ],
         "persistent": true
     },
-    "browser_action":{
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon64.png",
+        "128": "icons/icon128.png"
+    },
+    "browser_action": {
+        "default_icon": {                   
+          "16": "icons/icon16.png",         
+          "24": "icons/icon24.png",           
+          "32": "icons/icon32.png"            
+    },
         "default_title": "WeatherChange",
         "default_popup": "index.html"
     },
