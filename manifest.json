@@ -1,7 +1,7 @@
 {
     "name": "WeatherChange",
     "description": "Check the weather forecast of your current location or search for other cities. With changing weather backgrounds.",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "manifest_version": 2,
     "background": {
         "scripts": [
