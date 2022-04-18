@@ -1,1 +1,0 @@
-document.body.style.backgroundImage = "url('https://source.unsplash.com/random/1920x1080/?weather," + "sunny" + "')";

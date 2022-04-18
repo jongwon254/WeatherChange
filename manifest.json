@@ -1,12 +1,11 @@
 {
     "name": "WeatherChange",
-    "description": "Check your weather forecast with changing backgrounds!",
+    "description": "Check your weather forecast anytime you want with changing weather backgrounds!",
     "version": "1.0.0",
     "manifest_version": 2,
     "background": {
         "scripts": [
-            "script.js",
-            "app.js"
+            "script.js"
         ],
         "persistent": true
     },
@@ -15,6 +14,7 @@
         "default_popup": "index.html"
     },
     "permissions": [
+        "geolocation",
         "https://*/*",
         "http://*/*",
         "tabs"

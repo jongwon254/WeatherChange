@@ -1,4 +1,4 @@
-var weather = {
+let weather = {
     
     // get weather information from api with specific parameters
     "apiKey": "ecb0381659a4d82b4beb615cc0f84b6c",
@@ -8,7 +8,13 @@ var weather = {
         + "&units=metric&appid=" 
         + this.apiKey
         )
-        .then((response) => response.json())
+        // check if input is correct
+        .then((response) => {
+            if (!response.ok) {
+                alert("City not found.");
+            }
+            return response.json();
+        })
         .then((data) => this.displayWeather(data));
 
     },
@@ -37,10 +43,8 @@ var weather = {
         document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
 
-        chrome.tabs.executeScript({
-            file: "app.js"
-        })
-        
+        // change background according to weather forecast
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/random/800x600/?" + description + "')";
     },
 
     // get city from search bar
@@ -61,10 +65,28 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event) 
     }
 });
 
-// standard location at loading = Munich
-weather.fetchWeather("Munich");
+// get current location of user
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  // convert (lat,long) position into city name and fetch weather data of location
+  function showPosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude =  position.coords.longitude;
 
-// background of page
-chrome.tabs.executeScript({
-    file: "app.js"
-})
+    const geoApi = "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude="
+    + latitude  + "&longitude=" + longitude + "&localityLanguage=en";
+
+    fetch(geoApi)
+    .then(response => response.json())
+    .then(data => {
+        weather.fetchWeather(data.city);
+    })
+  }
+
+getLocation();
